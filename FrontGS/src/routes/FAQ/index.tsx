@@ -49,9 +49,9 @@ export default function Faq() {
   }
 
   return (
-    <main className="min-h-screen">
-      <section className="container mx-auto px-4 py-20">
-        <div className="max-w-3xl mx-auto">
+    <main className="min-h-screen flex flex-col">
+      <section className="flex-1 w-full px-4 py-20">
+        <div className="w-full max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 mb-4 text-center">
             Perguntas Frequentes
           </h1>

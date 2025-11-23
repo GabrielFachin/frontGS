@@ -9,10 +9,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen flex flex-col">
       
-      <section className="container mx-auto px-4 py-20 md:py-32">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="flex-1 flex items-center w-full px-4 py-20 md:py-32">
+        <div className="w-full max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 leading-tight">
             Up'U
           </h1>
@@ -42,7 +42,7 @@ export default function Home() {
       </section>
 
       
-      <section className="container mx-auto px-4 py-20">
+      <section className="w-full px-4 py-20">
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {[
             {
@@ -74,8 +74,8 @@ export default function Home() {
       </section>
 
       
-      <section className="container mx-auto px-4 py-20">
-        <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-purple-500/20 rounded-2xl p-12">
+      <section className="w-full px-4 py-20">
+        <div className="w-full max-w-4xl mx-auto text-center bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-purple-500/20 rounded-2xl p-8 md:p-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Pronto para impulsionar sua carreira?
           </h2>

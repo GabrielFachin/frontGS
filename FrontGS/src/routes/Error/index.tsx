@@ -4,8 +4,8 @@ export default function Error() {
   const navigate = useNavigate();
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-4">
-      <div className="text-center">
+    <main className="min-h-screen flex items-center justify-center px-4">
+      <div className="w-full max-w-2xl mx-auto text-center">
         <div className="mb-8">
           <h1 className="text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
             404
