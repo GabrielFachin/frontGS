@@ -46,17 +46,14 @@ export default function Home() {
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {[
             {
-              icon: '📊',
               title: 'Análise de Tendências',
               desc: 'Acompanhe em tempo real as tecnologias mais demandadas pelo mercado'
             },
             {
-              icon: '🎯',
               title: 'Personalização',
               desc: 'Recomendações baseadas em suas habilidades e interesses atuais'
             },
             {
-              icon: '🚀',
               title: 'Plano de Carreira',
               desc: 'Trace sua jornada de aprendizado com metas claras e alcançáveis'
             }
@@ -65,7 +62,6 @@ export default function Home() {
               key={idx}
               className="p-8 rounded-xl bg-gradient-to-br from-slate-800/50 to-purple-900/20 border border-purple-500/20 hover:border-purple-500/40 transition-all hover:transform hover:scale-105"
             >
-              <div className="text-5xl mb-4">{feature.icon}</div>
               <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
               <p className="text-gray-400 leading-relaxed">{feature.desc}</p>
             </div>

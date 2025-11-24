@@ -18,7 +18,7 @@ export default function Login() {
     try {
       const response = await api.login(data);
       
-      if (response.token) {
+      if (response && response.token) {
         localStorage.setItem("token", response.token);
         localStorage.setItem("user", JSON.stringify(response.user));
         navigate("/");
@@ -27,7 +27,11 @@ export default function Login() {
         setLoginError("Email ou senha incorretos");
       }
     } catch (error) {
-      setLoginError("Erro ao fazer login. Tente novamente.");
+      if (error instanceof Error) {
+        setLoginError(error.message || "Erro ao fazer login. Tente novamente.");
+      } else {
+        setLoginError("Erro ao fazer login. Tente novamente.");
+      }
     }
   };
 

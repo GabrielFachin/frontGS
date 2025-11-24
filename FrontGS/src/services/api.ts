@@ -7,11 +7,11 @@ interface ApiError {
   status?: number;
 }
 
-const handleApiError = (error: unknown): never => {
+const handleApiError = (error: unknown): ApiError => {
   if (error instanceof Error) {
-    throw error;
+    return { message: error.message };
   }
-  throw new Error('Erro desconhecido na API');
+  return { message: 'Erro desconhecido na API' };
 };
 
 export const api = {
@@ -24,19 +24,27 @@ export const api = {
       });
 
       if (!response.ok) {
+        if (response.status === 400) {
+          throw new Error('Email já está em uso');
+        }
         throw new Error('Erro ao cadastrar');
       }
 
       return await response.json() as User;
     } catch (error) {
       console.error('Erro no cadastro:', error);
-      return handleApiError(error);
+      throw handleApiError(error);
     }
   },
 
   async login(data: LoginData): Promise<LoginResponse> {
     try {
       const response = await fetch(`${API_URL}/usuario`);
+      
+      if (!response.ok) {
+        throw new Error('Erro ao buscar usuários');
+      }
+
       const usuarios = await response.json() as User[];
 
       const usuarioEncontrado = usuarios.find(
@@ -58,7 +66,7 @@ export const api = {
       throw new Error('Credenciais inválidas');
     } catch (error) {
       console.error('Erro no login:', error);
-      return handleApiError(error);
+      throw handleApiError(error);
     }
   },
 
@@ -111,7 +119,7 @@ export const api = {
       return await response.json() as User;
     } catch (error) {
       console.error('Erro ao buscar usuário:', error);
-      return handleApiError(error);
+      throw handleApiError(error);
     }
   },
 
@@ -133,7 +141,7 @@ export const api = {
       return usuario;
     } catch (error) {
       console.error('Erro ao buscar usuário:', error);
-      return handleApiError(error);
+      throw handleApiError(error);
     }
   },
 
@@ -148,7 +156,7 @@ export const api = {
       return await response.json() as User[];
     } catch (error) {
       console.error('Erro ao listar:', error);
-      return handleApiError(error);
+      throw handleApiError(error);
     }
   }
 };

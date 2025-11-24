@@ -25,16 +25,22 @@ export default function Cadastro() {
   const onSubmit: SubmitHandler<CadastroForm> = async (data) => {
     try {
       const { confirmarSenha, ...cadastroData } = data;
-      await api.cadastrar(cadastroData);
+      const result = await api.cadastrar(cadastroData);
       
-      setCadastroMessage("Cadastro realizado com sucesso!");
-      setSuccess(true);
-      
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
+      if (result) {
+        setCadastroMessage("Cadastro realizado com sucesso!");
+        setSuccess(true);
+        
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
+      }
     } catch (error) {
-      setCadastroMessage("Erro ao cadastrar. Email já pode estar em uso.");
+      if (error instanceof Error) {
+        setCadastroMessage(error.message || "Erro ao cadastrar. Email já pode estar em uso.");
+      } else {
+        setCadastroMessage("Erro ao cadastrar. Email já pode estar em uso.");
+      }
       setSuccess(false);
     }
   };
